@@ -22,7 +22,7 @@ public class ClientProfileEntity {
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
-    @Column(name = "weigth")
+    @Column(name = "weight")
     private Double weight;
 
     @Column(name = "height")
@@ -32,5 +32,5 @@ public class ClientProfileEntity {
     private Integer age; // MODIFICAR SEGUN FECHA DE NACIMIENTO
 
     @Column(name = "experience_level")
-    private String experiencieLevel;
+    private String experienceLevel;
 }
