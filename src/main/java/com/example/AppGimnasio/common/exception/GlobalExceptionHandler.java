@@ -117,5 +117,24 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    //CLIENT EXCEPTIONS
+    @ExceptionHandler(ClientNotFoundException.class)
+    public ProblemDetail handleClientNotFound(
+            ClientNotFoundException ex
+    ) {
+
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+
+        problemDetail.setTitle(
+                "Perfil de cliente no encontrado."
+        );
+
+        return problemDetail;
+    }
+
 }
 
