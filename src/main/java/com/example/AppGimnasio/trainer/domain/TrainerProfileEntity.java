@@ -1,4 +1,4 @@
-package com.example.AppGimnasio.trainer;
+package com.example.AppGimnasio.trainer.domain;
 
 import com.example.AppGimnasio.user.domain.UserEntity;
 import jakarta.persistence.*;
@@ -25,7 +25,7 @@ public class TrainerProfileEntity {
     @Column(name = "bio", nullable = false)
     private String bio; // SEGURAMENTE SE AGREGUE OTRA CLASE
 
-    @Column(name = "verified")
+    @Column(name = "verified", nullable = false)
     private Boolean verified;
 
     @Column(name = "instagram")

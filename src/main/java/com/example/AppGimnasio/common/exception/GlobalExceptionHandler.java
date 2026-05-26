@@ -136,5 +136,23 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    //TRAINER EXCEPTIONS
+    @ExceptionHandler(TrainerNotFoundException.class)
+    public ProblemDetail handleTrainerNotFound(
+            TrainerNotFoundException ex
+    ) {
+
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+
+        problemDetail.setTitle(
+                "Perfil de entrenador no encontrado"
+        );
+
+        return problemDetail;
+    }
 }
 

@@ -14,6 +14,7 @@ public interface UserMapper {
     @Mapping(target = "validatedAccount", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "deletedAt", ignore = true)
+    @Mapping(target = "userRoles", ignore = true)
     @Mapping(target = "passwordHash", source = "password")
     UserEntity toEntity(UserCreateRequest request);
 
