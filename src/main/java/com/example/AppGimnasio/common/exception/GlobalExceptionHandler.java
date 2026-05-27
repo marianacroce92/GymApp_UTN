@@ -154,5 +154,42 @@ public class GlobalExceptionHandler {
 
         return problemDetail;
     }
+
+    //EXERCISE EXCEPTIONS
+    @ExceptionHandler(ExerciseAlreadyExistsException.class)
+    public ProblemDetail handleExerciseAlreadyExists(
+            ExerciseAlreadyExistsException ex
+    ) {
+
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.CONFLICT,
+                        ex.getMessage()
+                );
+
+        problemDetail.setTitle(
+                "El ejercicio ya existe."
+        );
+
+        return problemDetail;
+    }
+
+    @ExceptionHandler(ExerciseNotFoundException.class)
+    public ProblemDetail handleExerciseNotFound(
+            ExerciseNotFoundException ex
+    ) {
+
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+
+        problemDetail.setTitle(
+                "Ejercicio no encontrado."
+        );
+
+        return problemDetail;
+    }
 }
 
