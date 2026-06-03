@@ -1,10 +1,9 @@
-package com.example.AppGimnasio.client.controller;
+package com.example.AppGimnasio.clientProfile.controller;
 
-import com.example.AppGimnasio.client.dto.ClientCreateRequest;
-import com.example.AppGimnasio.client.dto.ClientResponse;
-import com.example.AppGimnasio.client.dto.ClientUpdateRequest;
-import com.example.AppGimnasio.client.mapper.ClientMapper;
-import com.example.AppGimnasio.client.service.IClientService;
+import com.example.AppGimnasio.clientProfile.dto.ClientCreateRequest;
+import com.example.AppGimnasio.clientProfile.dto.ClientResponse;
+import com.example.AppGimnasio.clientProfile.dto.ClientUpdateRequest;
+import com.example.AppGimnasio.clientProfile.service.IClientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

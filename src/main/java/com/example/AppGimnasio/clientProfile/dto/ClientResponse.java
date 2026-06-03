@@ -1,4 +1,4 @@
-package com.example.AppGimnasio.client.dto;
+package com.example.AppGimnasio.clientProfile.dto;
 
 import java.util.UUID;
 

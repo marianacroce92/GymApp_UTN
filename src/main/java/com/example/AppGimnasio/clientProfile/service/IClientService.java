@@ -1,8 +1,8 @@
-package com.example.AppGimnasio.client.service;
+package com.example.AppGimnasio.clientProfile.service;
 
-import com.example.AppGimnasio.client.dto.ClientCreateRequest;
-import com.example.AppGimnasio.client.dto.ClientResponse;
-import com.example.AppGimnasio.client.dto.ClientUpdateRequest;
+import com.example.AppGimnasio.clientProfile.dto.ClientCreateRequest;
+import com.example.AppGimnasio.clientProfile.dto.ClientResponse;
+import com.example.AppGimnasio.clientProfile.dto.ClientUpdateRequest;
 
 import java.util.List;
 import java.util.UUID;
