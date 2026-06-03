@@ -1,7 +1,7 @@
-package com.example.AppGimnasio.client.mapper;
+package com.example.AppGimnasio.clientProfile.mapper;
 
-import com.example.AppGimnasio.client.domain.ClientProfileEntity;
-import com.example.AppGimnasio.client.dto.ClientResponse;
+import com.example.AppGimnasio.clientProfile.domain.ClientProfileEntity;
+import com.example.AppGimnasio.clientProfile.dto.ClientResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

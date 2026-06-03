@@ -1,4 +1,4 @@
-package com.example.AppGimnasio.client.domain;
+package com.example.AppGimnasio.clientProfile.domain;
 
 import com.example.AppGimnasio.user.domain.UserEntity;
 import jakarta.persistence.*;

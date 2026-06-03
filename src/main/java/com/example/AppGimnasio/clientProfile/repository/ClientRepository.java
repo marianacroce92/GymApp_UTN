@@ -1,6 +1,6 @@
-package com.example.AppGimnasio.client.repository;
+package com.example.AppGimnasio.clientProfile.repository;
 
-import com.example.AppGimnasio.client.domain.ClientProfileEntity;
+import com.example.AppGimnasio.clientProfile.domain.ClientProfileEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

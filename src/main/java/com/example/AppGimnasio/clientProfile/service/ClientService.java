@@ -1,11 +1,11 @@
-package com.example.AppGimnasio.client.service;
+package com.example.AppGimnasio.clientProfile.service;
 
-import com.example.AppGimnasio.client.domain.ClientProfileEntity;
-import com.example.AppGimnasio.client.dto.ClientCreateRequest;
-import com.example.AppGimnasio.client.dto.ClientResponse;
-import com.example.AppGimnasio.client.dto.ClientUpdateRequest;
-import com.example.AppGimnasio.client.mapper.ClientMapper;
-import com.example.AppGimnasio.client.repository.ClientRepository;
+import com.example.AppGimnasio.clientProfile.domain.ClientProfileEntity;
+import com.example.AppGimnasio.clientProfile.dto.ClientCreateRequest;
+import com.example.AppGimnasio.clientProfile.dto.ClientResponse;
+import com.example.AppGimnasio.clientProfile.dto.ClientUpdateRequest;
+import com.example.AppGimnasio.clientProfile.mapper.ClientMapper;
+import com.example.AppGimnasio.clientProfile.repository.ClientRepository;
 import com.example.AppGimnasio.common.exception.ClientNotFoundException;
 import com.example.AppGimnasio.common.exception.UserNotFoundException;
 import com.example.AppGimnasio.user.domain.UserEntity;
