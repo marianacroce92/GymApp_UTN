@@ -1,7 +1,7 @@
-package com.example.AppGimnasio.rutineObjective.domain;
+package com.example.AppGimnasio.routineObjective.domain;
 
 import com.example.AppGimnasio.objective.domain.ObjectiveEntity;
-import com.example.AppGimnasio.routine.domain.RoutineEntity;
+//import com.example.AppGimnasio.routine.domain.RoutineEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,9 +18,10 @@ public class RutineObjectiveEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "routine_id", nullable = false)
-    private RoutineEntity routine;
+    /// Falta la entidad routine
+    //@ManyToOne(fetch = FetchType.LAZY, optional = false)
+    //@JoinColumn(name = "routine_id", nullable = false)
+    //private RoutineEntity routine;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "objective_id", nullable = false)
