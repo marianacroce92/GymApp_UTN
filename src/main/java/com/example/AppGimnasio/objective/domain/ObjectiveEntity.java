@@ -1,4 +1,5 @@
 package com.example.AppGimnasio.objective.domain;
+import com.example.AppGimnasio.routineObjective.domain.RutineObjectiveEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
