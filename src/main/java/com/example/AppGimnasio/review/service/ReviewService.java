@@ -31,12 +31,11 @@ public class ReviewService {
 
         TrainerProfileEntity trainer = trainerRepository.findById(request.trainerId())
                 .orElseThrow(() -> new RuntimeException("Trainer not found"));
-
         ReviewEntity review = ReviewEntity.builder()
                 .rating(request.rating())
                 .comment(request.comment())
                 .client(client)
-                .trainer(trainer)
+                //.trainer()
                 .build();
 
         return reviewMapper.toResponse(

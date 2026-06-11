@@ -2,7 +2,7 @@ package com.example.AppGimnasio.routineObjetive.dto;
 
 public record RoutineObjectiveResponse(
 
-        Long id,
+        Integer id,
 
        // Long routineId,
 

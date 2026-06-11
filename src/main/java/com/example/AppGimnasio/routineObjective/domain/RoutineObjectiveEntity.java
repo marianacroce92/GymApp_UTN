@@ -12,11 +12,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RutineObjectiveEntity {
+public class RoutineObjectiveEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     /// Falta la entidad routine
     //@ManyToOne(fetch = FetchType.LAZY, optional = false)

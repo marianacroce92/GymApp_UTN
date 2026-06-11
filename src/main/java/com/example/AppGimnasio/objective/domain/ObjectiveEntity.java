@@ -1,7 +1,9 @@
 package com.example.AppGimnasio.objective.domain;
-import com.example.AppGimnasio.routineObjective.domain.RutineObjectiveEntity;
+import com.example.AppGimnasio.routineObjective.domain.RoutineObjectiveEntity;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "objectives")
@@ -19,5 +21,5 @@ public class ObjectiveEntity {
     private String name;
 
     @OneToMany(mappedBy = "objective")
-    private List<RutineObjectiveEntity> rutineObjectives;
+    private List<RoutineObjectiveEntity> rutineObjectives;
 }

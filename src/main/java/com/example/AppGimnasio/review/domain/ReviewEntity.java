@@ -1,7 +1,7 @@
 package com.example.AppGimnasio.review.domain;
 
 import com.example.AppGimnasio.clientProfile.domain.ClientProfileEntity;
-import com.example.AppGimnasio.trainerProfile.domain.TrainerProfileEntity;
+import com.example.AppGimnasio.trainer.domain.TrainerProfileEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

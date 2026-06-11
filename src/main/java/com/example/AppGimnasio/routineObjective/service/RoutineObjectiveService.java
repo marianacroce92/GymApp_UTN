@@ -4,25 +4,25 @@ import com.example.AppGimnasio.objective.domain.ObjectiveEntity;
 import com.example.AppGimnasio.objective.repository.ObjectiveRepository;
 //import com.example.AppGimnasio.routine.domain.RoutineEntity;
 //import com.example.AppGimnasio.routine.repository.RoutineRepository;
-import com.example.AppGimnasio.routineObjective.domain.RutineObjectiveEntity;
+import com.example.AppGimnasio.routineObjective.domain.RoutineObjectiveEntity;
 import com.example.AppGimnasio.routineObjective.dto.RoutineObjectiveRequest;
 import com.example.AppGimnasio.routineObjetive.dto.RoutineObjectiveResponse;
 import com.example.AppGimnasio.routineObjetive.dto.RoutineObjectiveUpdate;
 import com.example.AppGimnasio.routineObjetive.mapper.RoutineObjectiveMapper;
 import com.example.AppGimnasio.routineObjective.repository.RoutineObjectiveRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
-
-@Service
-@RequiredArgsConstructor
 public class RoutineObjectiveService {
 
     private final RoutineObjectiveRepository routineObjectiveRepository;
-    //private final RoutineRepository routineRepository;
     private final ObjectiveRepository objectiveRepository;
     private final RoutineObjectiveMapper routineObjectiveMapper;
+
+    public RoutineObjectiveService(RoutineObjectiveRepository routineObjectiveRepository,ObjectiveRepository objectiveRepository, RoutineObjectiveMapper routineObjectiveMapper ){
+        this.routineObjectiveMapper=routineObjectiveMapper;
+        this.routineObjectiveRepository=routineObjectiveRepository;
+        this.objectiveRepository=objectiveRepository;
+    }
 
     public RoutineObjectiveResponse create(RoutineObjectiveRequest request) {
 
@@ -37,10 +37,10 @@ public class RoutineObjectiveService {
        // RoutineEntity routine = routineRepository.findById(request.routineId())
         //       .orElseThrow(() -> new RuntimeException("Routine not found"));
 
-        ObjectiveEntity objective = objectiveRepository.findById(request.objectiveId())
+        ObjectiveEntity objective = objectiveRepository.findById(Long.valueOf(request.objectiveId()))
                 .orElseThrow(() -> new RuntimeException("Objective not found"));
 
-        RutineObjectiveEntity entity = RutineObjectiveEntity.builder()
+        RoutineObjectiveEntity entity = RoutineObjectiveEntity.builder()
              //   .routine(routine)
                 .objective(objective)
                 .build();
@@ -57,19 +57,19 @@ public class RoutineObjectiveService {
                 .toList();
     }
 
-    public RoutineObjectiveResponse findById(Long id) {
+    public RoutineObjectiveResponse findById(Integer id) {
 
-        RutineObjectiveEntity entity = routineObjectiveRepository.findById(id)
+        RoutineObjectiveEntity entity = routineObjectiveRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Relation not found"));
 
         return routineObjectiveMapper.toResponse(entity);
     }
 
     public RoutineObjectiveResponse update(
-            Long id,
+            Integer id,
             RoutineObjectiveUpdate request) {
 
-        RutineObjectiveEntity entity = routineObjectiveRepository.findById(id)
+        RoutineObjectiveEntity entity = routineObjectiveRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Relation not found"));
 
        // RoutineEntity routine = routineRepository.findById(request.routineId())
@@ -86,9 +86,9 @@ public class RoutineObjectiveService {
         );
     }
 
-    public void delete(Long id) {
+    public void delete(Integer id) {
 
-        RutineObjectiveEntity entity = routineObjectiveRepository.findById(id)
+        RoutineObjectiveEntity entity = routineObjectiveRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Relation not found"));
 
         routineObjectiveRepository.delete(entity);

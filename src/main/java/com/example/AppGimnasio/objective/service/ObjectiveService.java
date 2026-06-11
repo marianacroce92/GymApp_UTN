@@ -5,6 +5,7 @@ import com.example.AppGimnasio.objective.dto.ObjectiveCreateRequest;
 import com.example.AppGimnasio.objective.dto.ObjectiveResponse;
 import com.example.AppGimnasio.objective.dto.ObjectiveUpdateRequest;
 import com.example.AppGimnasio.objective.mapper.ObjectiveMapper;
+import com.example.AppGimnasio.objective.repository.ObjectiveRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,17 +15,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ObjectiveService {
 
-    private final ObjectiveService objectiveRepository;
+    private final ObjectiveRepository objectiveRepository;
     private final ObjectiveMapper objectiveMapper;
-    private final ObjectiveEntity objetiveEntity;
 
-    public ObjectiveService create(ObjectiveCreateRequest request) {
 
+    public ObjectiveResponse create(ObjectiveCreateRequest request) {
         if (objectiveRepository.existsByName(request.getName())) {
             throw new IllegalArgumentException("Objective already exists");
         }
 
-        ObjectiveEntity objective = objetiveEntity.builder()
+        ObjectiveEntity objective = ObjectiveEntity.builder()
                 .name(request.getName())
                 .build();
 
@@ -54,9 +54,7 @@ public class ObjectiveService {
 
         objective.setName(request.getName());
 
-        return objectiveMapper.toResponse(
-                objectiveRepository.save(objective)
-        );
+        return objectiveMapper.toResponse(objectiveRepository.save(objective));
     }
 
     public void delete(Long id) {

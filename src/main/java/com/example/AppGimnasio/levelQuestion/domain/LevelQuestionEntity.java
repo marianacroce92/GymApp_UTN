@@ -7,21 +7,17 @@ import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
 import java.util.List;
 
 @Table(name="level_questions")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder @Entity
 
 public class LevelQuestionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
-    private Integer id;
-
     @Column(name="question", nullable = false)
     private String question;
 
-    @OneToMany(mappedBy = "question")
-    @JoinColumn(name="user_id")
+    @OneToMany(mappedBy = "levelQuestion")
     private List<LevelAnswerEntity> answers;
 
 }

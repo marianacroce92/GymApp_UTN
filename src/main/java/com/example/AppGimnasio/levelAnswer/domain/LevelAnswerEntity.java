@@ -4,7 +4,7 @@ import com.example.AppGimnasio.levelQuestion.domain.LevelQuestionEntity;
 import jakarta.persistence.*;
 import lombok.*;
 @Table(name="level_answers")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder @Entity
 public class LevelAnswerEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

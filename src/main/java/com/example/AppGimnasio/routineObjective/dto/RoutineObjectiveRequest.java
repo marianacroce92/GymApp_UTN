@@ -6,6 +6,6 @@ public record RoutineObjectiveRequest(
 
        // @NotNull Integer routineId;
 
-        @NotNull Integer objectiveId,
+        @NotNull Integer objectiveId
 
 ) {}
