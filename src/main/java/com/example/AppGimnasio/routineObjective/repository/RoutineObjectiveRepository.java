@@ -1,14 +1,9 @@
-package com.example.AppGimnasio.clientProfile.repository;
+package com.example.AppGimnasio.routineObjective.repository;
 
-import com.example.AppGimnasio.clientProfile.domain.ClientProfileEntity;
+import com.example.AppGimnasio.routineObjective.domain.RoutineObjectiveEntity;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
-import java.util.UUID;
-
-public interface ClientRepository extends JpaRepository<ClientProfileEntity, Long> {
-
-    Optional<ClientProfileEntity> findByUserExternalId(UUID userExternalId);
-
-    boolean existsByUserExternalId(UUID userExternalId);
+public interface RoutineObjectiveRepository extends JpaRepository<RoutineObjectiveEntity,Integer> {
+    boolean existsByRoutineIdAndObjectiveId(@NotNull Integer integer);
 }

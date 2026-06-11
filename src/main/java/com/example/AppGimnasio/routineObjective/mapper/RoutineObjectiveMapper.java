@@ -1,6 +1,6 @@
 package com.example.AppGimnasio.routineObjetive.mapper;
 
-import com.example.AppGimnasio.routineObjective.domain.RutineObjectiveEntity;
+import com.example.AppGimnasio.routineObjective.domain.RoutineObjectiveEntity;
 import com.example.AppGimnasio.routineObjetive.dto.RoutineObjectiveResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -9,5 +9,5 @@ import org.mapstruct.Mapping;
 public interface RoutineObjectiveMapper {
 
     @Mapping(target = "objectiveId", source = "objective.id")
-    RoutineObjectiveResponse toResponse(RutineObjectiveEntity entity);
+    RoutineObjectiveResponse toResponse(RoutineObjectiveEntity entity);
 }
