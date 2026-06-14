@@ -193,6 +193,20 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    //PAYMENT EXCEPTIONS
+    @ExceptionHandler(PaymentNotFoundException.class)
+    public ProblemDetail handlePaymentNotFound(
+            PaymentNotFoundException ex
+    ) {
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+        problemDetail.setTitle("Pago no encontrado.");
+        return problemDetail;
+    }
+
     //ENROLLMENT EXCEPTIONS
     @ExceptionHandler(EnrollmentNotFoundException.class)
     public ProblemDetail handleEnrollmentNotFound(
