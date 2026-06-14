@@ -4,7 +4,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
@@ -62,10 +61,10 @@ public class GlobalExceptionHandler {
     ){
 
         ProblemDetail problemDetail =
-            ProblemDetail.forStatusAndDetail(
-                    HttpStatus.NOT_FOUND,
-                    ex.getMessage()
-            );
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
         problemDetail.setTitle("Rol no encontrado.");
 
         return problemDetail;
@@ -190,6 +189,20 @@ public class GlobalExceptionHandler {
                 "Ejercicio no encontrado."
         );
 
+        return problemDetail;
+    }
+
+    //PROGRESS EXCEPTIONS
+    @ExceptionHandler(ProgressNotFoundException.class)
+    public ProblemDetail handleProgressNotFound(
+            ProgressNotFoundException ex
+    ) {
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+        problemDetail.setTitle("Registro de progreso no encontrado.");
         return problemDetail;
     }
 
