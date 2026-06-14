@@ -1,7 +1,7 @@
-package com.example.AppGimnasio.routineObjetive.mapper;
+package com.example.AppGimnasio.routineObjective.mapper;
 
 import com.example.AppGimnasio.routineObjective.domain.RoutineObjectiveEntity;
-import com.example.AppGimnasio.routineObjetive.dto.RoutineObjectiveResponse;
+import com.example.AppGimnasio.routineObjective.dto.RoutineObjectiveResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

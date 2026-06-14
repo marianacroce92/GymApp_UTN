@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
@@ -191,5 +192,36 @@ public class GlobalExceptionHandler {
 
         return problemDetail;
     }
+
+    //ROUTINE EXCEPTIONS
+    @ExceptionHandler(RoutineNotFoundException.class)
+    public ProblemDetail handleRoutineNotFound(
+            RoutineNotFoundException ex
+    ) {
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+
+        problemDetail.setTitle("Rutina no encontrada.");
+
+        return problemDetail;
+    }
+
+    @ExceptionHandler(RoutineAlreadyExistsException.class)
+    public ProblemDetail handleRoutineAlreadyExists(
+            RoutineAlreadyExistsException ex
+    ) {
+
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.CONFLICT,
+                        ex.getMessage()
+                );
+        problemDetail.setTitle("La rutina ya existe.");
+        return problemDetail;
+    }
+
 }
 
