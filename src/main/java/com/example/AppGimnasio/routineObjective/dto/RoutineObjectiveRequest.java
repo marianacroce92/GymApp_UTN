@@ -4,8 +4,8 @@ import jakarta.validation.constraints.NotNull;
 
 public record RoutineObjectiveRequest(
 
-       // @NotNull Integer routineId;
+        @NotNull Long routineId,
 
-        @NotNull Integer objectiveId
+        @NotNull Long objectiveId
 
 ) {}

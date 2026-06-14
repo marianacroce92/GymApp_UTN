@@ -1,11 +1,14 @@
 package com.example.AppGimnasio.routine.domain;
 
+import com.example.AppGimnasio.routineObjective.domain.RoutineObjectiveEntity;
 import com.example.AppGimnasio.trainer.domain.TrainerProfileEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -15,7 +18,6 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class RoutineEntity {
 
     @Id
@@ -35,9 +37,9 @@ public class RoutineEntity {
     @Column(name = "level", nullable = false)
     private RoutineLevel level;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "objective", nullable = false)
-    private RoutineObjective objective;
+    @OneToMany(mappedBy = "routine", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<RoutineObjectiveEntity> routineObjectives = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)

@@ -3,12 +3,15 @@ package com.example.AppGimnasio.routine.service;
 import com.example.AppGimnasio.common.exception.RoutineAlreadyExistsException;
 import com.example.AppGimnasio.common.exception.RoutineNotFoundException;
 import com.example.AppGimnasio.common.exception.TrainerNotFoundException;
+import com.example.AppGimnasio.objective.domain.ObjectiveEntity;
+import com.example.AppGimnasio.objective.repository.ObjectiveRepository;
 import com.example.AppGimnasio.routine.domain.RoutineEntity;
 import com.example.AppGimnasio.routine.dto.RoutineCreateRequest;
 import com.example.AppGimnasio.routine.dto.RoutineResponse;
 import com.example.AppGimnasio.routine.dto.RoutineUpdateRequest;
 import com.example.AppGimnasio.routine.mapper.RoutineMapper;
 import com.example.AppGimnasio.routine.repository.RoutineRepository;
+import com.example.AppGimnasio.routineObjective.domain.RoutineObjectiveEntity;
 import com.example.AppGimnasio.trainer.domain.TrainerProfileEntity;
 import com.example.AppGimnasio.trainer.repository.TrainerRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +22,11 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-
 public class RoutineService implements IRoutineService {
 
     private final RoutineRepository routineRepository;
     private final TrainerRepository trainerRepository;
+    private final ObjectiveRepository objectiveRepository;
     private final RoutineMapper routineMapper;
 
     @Override
@@ -36,16 +39,23 @@ public class RoutineService implements IRoutineService {
         TrainerProfileEntity trainer = null;
 
         if(request.trainerUserExternalId() != null) {
-
             trainer = trainerRepository
                     .findByUserExternalId(request.trainerUserExternalId())
                     .orElseThrow(() ->
                             new TrainerNotFoundException("Perfil de entrenador no encontrado."));
         }
 
-        RoutineEntity routine = routineMapper.toEntity(request);
+        ObjectiveEntity objective = objectiveRepository.findById(request.objectiveId())
+                .orElseThrow(() -> new RuntimeException("Objetivo no encontrado."));
 
+        RoutineEntity routine = routineMapper.toEntity(request);
         routine.setTrainer(trainer);
+
+        RoutineObjectiveEntity routineObjective = RoutineObjectiveEntity.builder()
+                .routine(routine)
+                .objective(objective)
+                .build();
+        routine.getRoutineObjectives().add(routineObjective);
 
         routine = routineRepository.save(routine);
 
@@ -54,7 +64,6 @@ public class RoutineService implements IRoutineService {
 
     @Override
     public List<RoutineResponse> findAll() {
-
         return  routineRepository.findAll()
                 .stream()
                 .map(routineMapper::toResponse)
@@ -63,22 +72,18 @@ public class RoutineService implements IRoutineService {
 
     @Override
     public RoutineResponse findByExternalId(UUID externalId) {
-
         RoutineEntity routine = routineRepository.findByExternalId(externalId)
                 .orElseThrow(() ->
                         new RoutineNotFoundException("Rutina no encontrada."));
-
         return routineMapper.toResponse(routine);
     }
 
     @Override
     public List<RoutineResponse> findByTrainer(UUID trainerUserExternalId) {
-
         TrainerProfileEntity trainer = trainerRepository
                 .findByUserExternalId(trainerUserExternalId)
                 .orElseThrow(() ->
                         new TrainerNotFoundException("Perfil de entrenador no encontrado."));
-
         return  routineRepository.findByTrainer(trainer)
                 .stream()
                 .map(routineMapper::toResponse)
@@ -95,10 +100,21 @@ public class RoutineService implements IRoutineService {
         routine.setTitle(request.title());
         routine.setDescription(request.description());
         routine.setLevel(request.level());
-        routine.setObjective(request.objective());
         routine.setType(request.type());
         routine.setPrice(request.price());
         routine.setDurationDays(request.durationDays());
+
+        if (request.objectiveId() != null) {
+            ObjectiveEntity objective = objectiveRepository.findById(request.objectiveId())
+                    .orElseThrow(() -> new RuntimeException("Objetivo no encontrado."));
+
+            routine.getRoutineObjectives().clear();
+            RoutineObjectiveEntity ro = RoutineObjectiveEntity.builder()
+                    .routine(routine)
+                    .objective(objective)
+                    .build();
+            routine.getRoutineObjectives().add(ro);
+        }
 
         routine = routineRepository.save(routine);
 
@@ -107,11 +123,9 @@ public class RoutineService implements IRoutineService {
 
     @Override
     public void delete(UUID externalId) {
-
         RoutineEntity routine = routineRepository.findByExternalId(externalId)
                 .orElseThrow(() ->
                         new RoutineNotFoundException("Rutina no encontrada."));
-
         routineRepository.delete(routine);
     }
 }

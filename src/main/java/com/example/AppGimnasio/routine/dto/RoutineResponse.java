@@ -1,7 +1,6 @@
 package com.example.AppGimnasio.routine.dto;
 
 import com.example.AppGimnasio.routine.domain.RoutineLevel;
-import com.example.AppGimnasio.routine.domain.RoutineObjective;
 import com.example.AppGimnasio.routine.domain.RoutineType;
 
 import java.math.BigDecimal;
@@ -18,7 +17,9 @@ public record RoutineResponse (
 
         RoutineLevel level,
 
-        RoutineObjective objective,
+        Long objectiveId,
+
+        String objectiveName,
 
         RoutineType type,
 

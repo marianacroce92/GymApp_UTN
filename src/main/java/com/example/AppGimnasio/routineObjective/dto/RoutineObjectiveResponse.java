@@ -1,4 +1,4 @@
-package com.example.AppGimnasio.routineObjetive.dto;
+package com.example.AppGimnasio.routineObjective.dto;
 
 public record RoutineObjectiveResponse(
 

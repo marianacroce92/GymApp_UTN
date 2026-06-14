@@ -1,7 +1,6 @@
 package com.example.AppGimnasio.routine.dto;
 
 import com.example.AppGimnasio.routine.domain.RoutineLevel;
-import com.example.AppGimnasio.routine.domain.RoutineObjective;
 import com.example.AppGimnasio.routine.domain.RoutineType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -17,7 +16,7 @@ public record RoutineCreateRequest (
 
         @NotNull RoutineLevel level,
 
-        @NotNull RoutineObjective objective,
+        @NotNull Long objectiveId,
 
         @NotNull RoutineType type,
 
