@@ -193,6 +193,20 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
+    //ENROLLMENT EXCEPTIONS
+    @ExceptionHandler(EnrollmentNotFoundException.class)
+    public ProblemDetail handleEnrollmentNotFound(
+            EnrollmentNotFoundException ex
+    ) {
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+        problemDetail.setTitle("Inscripción no encontrada.");
+        return problemDetail;
+    }
+
     //ROUTINE EXCEPTIONS
     @ExceptionHandler(RoutineNotFoundException.class)
     public ProblemDetail handleRoutineNotFound(
