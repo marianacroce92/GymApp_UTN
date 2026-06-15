@@ -1,5 +1,7 @@
 package com.example.AppGimnasio.userLevelTest.controller;
 
+import com.example.AppGimnasio.userLevelTest.dto.SubmitTestRequest;
+import com.example.AppGimnasio.userLevelTest.dto.TestResultResponse;
 import com.example.AppGimnasio.userLevelTest.dto.UserLevelTestRequest;
 import com.example.AppGimnasio.userLevelTest.dto.UserLevelTestResponse;
 import com.example.AppGimnasio.userLevelTest.dto.UserLevelTestUpdate;
@@ -49,5 +51,12 @@ public class UserLevelTestController {
             @PathVariable Integer id) {
 
         userLevelTestService.delete(id);
+    }
+
+    @PostMapping("/submit")
+    public TestResultResponse submitTest(
+            @RequestBody @Valid SubmitTestRequest request) {
+
+        return userLevelTestService.submitTest(request);
     }
 }

@@ -15,7 +15,8 @@ public class UserLevelTestEntity {
 
     @Column (name="score")
     private Integer score;
-    @Column (name="result_level")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "result_level")
     private ResultLevel resultLevel;
     @Column(name="created_at")
     private LocalDate createdAt;

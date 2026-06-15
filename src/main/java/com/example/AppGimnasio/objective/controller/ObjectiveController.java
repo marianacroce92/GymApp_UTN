@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ObjectiveController {
 
-    private ObjectiveService objectiveService;
+    private final ObjectiveService objectiveService;
 
     @PostMapping
     public ObjectiveResponse create(
