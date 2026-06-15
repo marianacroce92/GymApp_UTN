@@ -2,8 +2,6 @@ package com.example.AppGimnasio.levelQuestion.domain;
 import com.example.AppGimnasio.levelAnswer.domain.LevelAnswerEntity;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.AnyDiscriminatorImplicitValues;
-
 import java.util.List;
 
 @Table(name="level_questions")

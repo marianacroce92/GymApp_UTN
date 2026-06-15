@@ -1,5 +1,7 @@
 package com.example.AppGimnasio.levelQuestion.service;
 
+import com.example.AppGimnasio.levelQuestion.domain.LevelQuestionEntity;
+import com.example.AppGimnasio.levelQuestion.dto.LevelQuestionCreateRequest;
 import com.example.AppGimnasio.levelQuestion.dto.LevelQuestionResponse;
 import com.example.AppGimnasio.levelQuestion.mapper.LevelQuestionMapper;
 import com.example.AppGimnasio.levelQuestion.repository.LevelQuestionRepository;
@@ -15,8 +17,18 @@ public class LevelQuestionService {
     private final LevelQuestionRepository levelQuestionRepository;
     private final LevelQuestionMapper levelQuestionMapper;
 
-    public List<LevelQuestionResponse> findAll() {
+    public LevelQuestionResponse create(LevelQuestionCreateRequest request) {
 
+        LevelQuestionEntity entity = LevelQuestionEntity.builder()
+                .question(request.question())
+                .build();
+
+        return levelQuestionMapper.toDto(
+                levelQuestionRepository.save(entity)
+        );
+    }
+
+    public List<LevelQuestionResponse> findAll() {
         return levelQuestionRepository.findAll()
                 .stream()
                 .map(levelQuestionMapper::toDto)
@@ -24,7 +36,6 @@ public class LevelQuestionService {
     }
 
     public LevelQuestionResponse findById(Integer id) {
-
         return levelQuestionRepository.findById(id)
                 .map(levelQuestionMapper::toDto)
                 .orElseThrow(() ->

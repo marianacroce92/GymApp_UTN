@@ -1,6 +1,7 @@
 package com.example.AppGimnasio.routine.repository;
 
 import com.example.AppGimnasio.routine.domain.RoutineEntity;
+import com.example.AppGimnasio.routine.domain.RoutineLevel;
 import com.example.AppGimnasio.trainer.domain.TrainerProfileEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -16,6 +17,10 @@ public interface RoutineRepository extends JpaRepository<RoutineEntity, Long> {
 
     List<RoutineEntity> findByTrainer(
             TrainerProfileEntity trainer
+    );
+
+    List<RoutineEntity> findByLevel(
+            RoutineLevel level
     );
 
     boolean existsByTitle(
