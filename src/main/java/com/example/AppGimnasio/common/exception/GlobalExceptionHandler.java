@@ -264,5 +264,18 @@ public class GlobalExceptionHandler {
         return problemDetail;
     }
 
-}
+    //ROUTINE-EXERCISE EXCEPTIONS
+    @ExceptionHandler(RoutineExerciseNotFoundException.class)
+    public ProblemDetail handleRoutineExerciseNotFound(
+            RoutineExerciseNotFoundException ex
+    ) {
+        ProblemDetail problemDetail =
+                ProblemDetail.forStatusAndDetail(
+                        HttpStatus.NOT_FOUND,
+                        ex.getMessage()
+                );
+        problemDetail.setTitle("Asociación rutina-ejercicio no encontrada.");
+        return problemDetail;
+    }
 
+}
